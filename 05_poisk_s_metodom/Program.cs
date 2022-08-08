@@ -1,4 +1,4 @@
-﻿Console.Clear();
+﻿//Console.Clear();
 //(1) заполняем массив
 void FillArray(int[] collection) 
 {
@@ -30,17 +30,20 @@ void PrintArray(int[] col) //тоже на вход массив, но его н
 }
 
 //(3) описываем метод, отличный от void. он будет возвращать нам индекс
-int IndexOf(int[] collection, int find); //в качестве аргумента будет приходить collection и какой-то элемнт find
+int IndexOf(int[] collection, int find) //в качестве аргумента будет приходить collection и какой-то элемнт find
 {
     int count=collection.Length;  //определяем количество элементов count
     int index=0;
-    int position=0; //нам нужно куда-то сохранить найденную позицию
-
+    //int position=0; //сюда сохраняем позицию
+    //но в этом варианте если нужного значения нет, то выдаст 0.
+    //Поэтому присваиваем int position=-1;
+    int position=-1; // интерпретируем, как такой элемент не найден
     while (index<count)
     {
         if (collection[index] == find)
         {
             position=index;
+            break; // чтоб выдавал только первую позицию
         }
         index++;
     }
@@ -55,6 +58,6 @@ FillArray(array); // заполняем наш массив
 PrintArray(array); //распечатывает наш массив
 Console.WriteLine();
 
-int pos = IndexOf(array, 4); //в эту переменную положим нашу найденное значение. 
+int pos = IndexOf(array, 444); //в эту переменную положим нашу найденное значение. 
 Console.WriteLine(pos);
 
